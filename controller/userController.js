@@ -125,7 +125,7 @@ const userRegister = async (req, res) => {
     const alreadyExistingmobile = await User.findOne({
       mobile: req.body.mobile,
     });
-    if (req.body.password == req.body.spassword) {
+    if (req.body.password == req.body.cpassword) {
       if (!alreadyExistingusername && !alreadyExistingmobile) {
         const spassword = await securePassword(req.body.password);
         const user = User({
