@@ -1,0 +1,115 @@
+<%-include('../partials/adminHeader.ejs') %>
+
+  <div class="container-fluid">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-8">
+        <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <a href="" class="">
+              <h3 class="text-primary">
+                <i class="fa fa-user-edit me-2"></i>Add New Product
+              </h3>
+            </a>
+          </div>
+          <form action="/admin/addproduct" method="post" enctype="multipart/form-data">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Product Name" />
+              <label for="floatingInput">Product Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="floatingInput" name="price" placeholder="Price" required />
+              <label for="floatingInput">Price</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="floatingInput" name="stock" placeholder="stock" required />
+              <label for="floatingInput">Stock</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select type="text" class="form-select" name="gender" id="floatingSelect"
+                aria-label="Floating label select example">
+                <option selected>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <label for="floatingSelect">Gender</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select type="text" class="form-select" name="brand" id="floatingSelect"
+                aria-label="Floating label select example">
+                <option selected>Select</option>
+               
+
+              <option value="Allen solly">Allen solly</option>
+              <option value="Jockey">Jockey</option>
+              <option value="Peter England">Peter England</option>
+              <option value="Raymond">Raymond</option>
+              <option value="Levi's">Levi's</option>
+              <option value="Louis Philippe">Louis Philippe</option>
+              </select>
+              <label for="floatingSelect">Brand Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select type="text" class="form-select" name="category" id="floatingSelect"
+                aria-label="Floating label select example">
+                <option selected>Select</option>
+
+                <% for (let key of category){%>
+
+                  <option value="<%=key.categoryname %>">
+                    <%=key.categoryname %>
+                  </option>
+                  <%}%>
+                <!-- <option value="Shirt">Shirt</option>
+                <option value="T-Shirt">T-Shirt</option>
+                <option value="Pants">Pants</option>
+                <option value="Jeans">Jeans</option>
+                <option value="Kurti And Suits">Kurti And Suits</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Inner And Sleepwear">Inner And Sleepwear</option> -->
+              </select>
+              <label for="floatingSelect">Category</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select type="text" class="form-select" name="size" id="floatingSelect"
+                aria-label="Floating label select example">
+                <option selected>Select</option>
+                <option value="XXXL">XXL</option>
+                <option value="XXL">XXL</option>
+                <option value="XL">XL</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="S">S</option>
+                <option value="XS">XS</option>
+              </select>
+              <label for="floatingSelect">size</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control" id="floatingPassword" name="description" placeholder="Description"
+                required />
+              <label for="floatingPassword">Description</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="floatingInput" name="rating" placeholder="Rating in percentage"
+                required />
+              <label for="floatingInput">Rating in percentage</label>
+            </div>
+            <div class="mb-3">
+              <label for="formFileMultiple" class="form-label">Product image</label>
+              <input class="form-control bg-dark" type="file" id="formFileMultiple" name="productimg" multiple />
+            </div>
+            
+            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
+              Add Product
+            </button>
+            <% if(typeof message !=='undefined' ) { %>
+              <p style="color: red">
+                <%= message %>
+              </p>
+              <% } %>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%-include('../partials/adminFooter.ejs') %>

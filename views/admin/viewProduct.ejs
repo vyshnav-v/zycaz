@@ -1,0 +1,116 @@
+<%-include('../partials/adminHeader.ejs') %>
+
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <form action="" class="d-none md-0 d-md-flex ms-4">
+        <input
+          class="form-control border-0"
+          type="search"
+          name="psearch"
+          placeholder="Search"
+        />
+        <!-- <input type="submit" value="search"> -->
+        
+      </form>
+      <a href="">Show All</a>
+    </div>
+    <div class="table-responsive">
+      <table
+        class="table text-start align-middle table-bordered table-hover mb-0"
+      >
+        <thead>
+          <tr class="">
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Size</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Category</th>
+            <th scope="col">Product Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if( product.length > 0){ for(let i = 1;i <= product.length; i++){ %>
+          <tr>
+            <td><%= product[i-1].name %></td>
+            <td><%= product[i-1].price%></td>
+            <td><%= product[i-1].stock%></td>
+            <td><%= product[i-1].brand %></td>
+            <td><%= product[i-1].gender %></td>
+            <td><%= product[i-1].size %></td>
+            <td><%= product[i-1].rating %></td>
+            <td><%= product[i-1].category %></td>
+
+            <td><img src="/productImage/<%=product[i-1].image %>" alt="ZycaZ" width="150vw" height="150vh"></td>
+            <td>
+              <a
+                class="btn btn-sm btn-primary"
+                href="/admin/editproduct?id=<%= product[i-1]._id %>"
+                >Edit</a
+              >
+            </td>
+            <td>
+              <a
+                class="btn btn-sm btn-outline-danger"
+                href="/admin/deleteproduct?id=<%= product[i-1]._id %>"
+                >Delete</a
+              >
+              <%if(product[i-1].isDelete==0){%>
+                <a
+                class="btn btn-sm btn-outline-success"
+                href="/admin/backTodelete?id=<%= product[i-1]._id %>"
+                >SoftDeleted</a
+              >
+              <%}else{%>
+
+                <a
+                  class="btn btn-sm btn-outline-warning"
+                  href="/admin/softdelete?id=<%= product[i-1]._id %>"
+                  >SoftDelete</a
+                >
+              <%}%>
+            </td>
+
+          </tr>
+          <% } } else{ %>
+          <tr>
+            <td colspan="5">Product Not Found</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <div class="mt-5">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+              <li class="page-item ">
+                  <a class="page-link page-link-prev" href="?page=<%= previous %>" aria-label="Previous" tabindex="-1" >
+                      <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                  </a>
+              </li>
+              <% for(let i=1; i<= totalPages; i++) { %>
+                <%if(currentPage==i){%>
+  
+                  <li class="page-item active" aria-current="page"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+                <%}else{%>
+                  <li class="page-item" aria-current="page"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+  
+               <% }}%>
+  
+              <li class="page-item">
+                  <a class="page-link page-link-next" href="?page=<%= next %>" aria-label="Next">
+                      Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                  </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Recent Sales End -->
+
+<%-include('../partials/adminFooter.ejs') %>
