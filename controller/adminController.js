@@ -197,7 +197,7 @@ const viewProducts = async (req, res) => {
     adminSession = req.session;
     if (adminSession.adminid) {
     
-      const productData = await Product.find()
+      const productData = await Product.find({});
       res.render('admin/viewProduct', {
         product: productData,
         layout: '../views/layout/adminLayout.ejs',
