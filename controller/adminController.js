@@ -176,43 +176,12 @@ const viewUsers = async (req, res) => {
   try {
     adminSession = req.session;
     if (adminSession.adminid) {
-      let search = '';
-      if (req.query.search) {
-        search = req.query.search;
-      }
-      var page = 1;
-      if (req.query.page) {
-        page = req.query.page;
-      }
-      const limit = 6;
       const userData = await User.find({
         isAdmin: 0,
-        $or: [
-          { username: { $regex: `.*${search}.*`, $options: 'i' } },
-          { name: { $regex: `.*${search}.*`, $options: 'i' } },
-          { mobile: { $regex: `.*${search}.*`, $options: 'i' } },
-        ],
-      }).limit(limit * 1)
-      .skip((page - 1) * limit)
-      .exec();
-      const count = await User.find({
-        isAdmin: 0,
-        $or: [
-          { username: { $regex: `.*${search}.*`, $options: 'i' } },
-          { name: { $regex: `.*${search}.*`, $options: 'i' } },
-          { mobile: { $regex: `.*${search}.*`, $options: 'i' } },
-        ],
-      }).countDocuments();
-      // console.log(userData);
-      const productData = await Product.find();
+      });
 
       res.render('admin/viewUsers', {
         users: userData,
-        product: productData,
-        totalPages: Math.ceil(count / limit),
-        currentPage: page,
-        previous:new Number(page)-1,
-        next:new Number (page)+1,
         layout: '../views/layout/adminLayout.ejs',
       });
     } else {
@@ -227,39 +196,10 @@ const viewProducts = async (req, res) => {
   try {
     adminSession = req.session;
     if (adminSession.adminid) {
-      let search = '';
-      if (req.query.psearch) {
-        search = req.query.psearch;
-      }
-      var page = 1;
-      if (req.query.page) {
-        page = req.query.page;
-      }
-      const limit = 6;
-      const userData = await User.find({ isAdmin: 0 });
-      const productData = await Product.find({
-        $or: [
-          { name: { $regex: `.*${search}.*`, $options: 'i' } },
-          { brand: { $regex: `.*${search}.*`, $options: 'i' } },
-          { category: { $regex: `.*${search}.*`, $options: 'i' } },
-        ],
-      }).limit(limit * 1)
-      .skip((page - 1) * limit)
-      .exec();
-      const count = await Product.find({
-        $or: [
-          { name: { $regex: `.*${search}.*`, $options: 'i' } },
-          { brand: { $regex: `.*${search}.*`, $options: 'i' } },
-          { category: { $regex: `.*${search}.*`, $options: 'i' } },
-        ],
-      }).countDocuments();
+    
+      const productData = await Product.find()
       res.render('admin/viewProduct', {
         product: productData,
-        users: userData,
-        totalPages: Math.ceil(count / limit),
-        currentPage: page,
-        previous:new Number(page)-1,
-        next:new Number (page)+1,
         layout: '../views/layout/adminLayout.ejs',
       });
     } else {
