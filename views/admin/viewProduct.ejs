@@ -2,21 +2,9 @@
 
 <div class="container-fluid pt-4 px-4">
   <div class="bg-light text-center rounded p-4">
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <form action="" class="d-none md-0 d-md-flex ms-4">
-        <input
-          class="form-control border-0"
-          type="search"
-          name="psearch"
-          placeholder="Search"
-        />
-        <!-- <input type="submit" value="search"> -->
-        
-      </form>
-      <a href="">Show All</a>
-    </div>
+   
     <div class="table-responsive">
-      <table
+      <table id="myTable"
         class="table text-start align-middle table-bordered table-hover mb-0"
       >
         <thead>
@@ -31,6 +19,7 @@
             <th scope="col">Category</th>
             <th scope="col">Product Image</th>
             <th scope="col">Action</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -83,31 +72,7 @@
           <% } %>
         </tbody>
       </table>
-      <div class="mt-5">
-        <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center">
-              <li class="page-item ">
-                  <a class="page-link page-link-prev" href="?page=<%= previous %>" aria-label="Previous" tabindex="-1" >
-                      <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
-                  </a>
-              </li>
-              <% for(let i=1; i<= totalPages; i++) { %>
-                <%if(currentPage==i){%>
-  
-                  <li class="page-item active" aria-current="page"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
-                <%}else{%>
-                  <li class="page-item" aria-current="page"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
-  
-               <% }}%>
-  
-              <li class="page-item">
-                  <a class="page-link page-link-next" href="?page=<%= next %>" aria-label="Next">
-                      Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
-                  </a>
-              </li>
-          </ul>
-        </nav>
-      </div>
+     
     </div>
   </div>
 </div>
