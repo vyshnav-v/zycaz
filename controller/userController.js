@@ -286,7 +286,7 @@ const shopView = async (req, res) => {
         category: category,
         count: userData.cart.totalqty,
         wcount: userData.wishlist.totalqty,
-        icon:userData.wishlist.item.icon,
+        icon: userData.wishlist.item.icon,
         totalPages: Math.ceil(countpage / limit),
         currentPage: page,
         previous: new Number(page) - 1,
@@ -299,7 +299,7 @@ const shopView = async (req, res) => {
         category: category,
         count: 0,
         wcount: 0,
-        icon:0,
+        icon: 0,
         totalPages: Math.ceil(countpage / limit),
         currentPage: page,
         previous: new Number(page) - 1,
@@ -580,11 +580,11 @@ const addAddress = async (req, res) => {
     if (session.userId) {
       const addressData = Address({
         userId: session.userId,
-        name: req.body.name,
-        lname: req.body.lname,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         country: req.body.country,
-        house: req.body.house,
-        landmark: req.body.landmark,
+        address: req.body.streetAddress,
+        address2: req.body.streetAddress2,
         city: req.body.city,
         state: req.body.state,
         pin: req.body.pin,
@@ -825,8 +825,11 @@ const checkout = async (req, res) => {
   try {
     session = req.session;
     if (session.userId) {
+      const id = req.query.addressid;
       const userData = await User.findById({ _id: session.userId });
       const completeUser = await userData.populate('cart.item.productId');
+      const addressData = await Address.find({ userId: session.userId });
+      const selectAddress = await Address.findOne({ _id: id });
       if (session.couponTotal == 0) {
         //update coupon
         session.couponTotal = userData.cart.totalPrice;
@@ -841,9 +844,11 @@ const checkout = async (req, res) => {
         nocoupon,
         count: userData.cart.totalqty,
         wcount: userData.wishlist.totalqty,
+        userAddress: addressData,
+        addSelect: selectAddress,
       });
-      nocoupon=false;
-
+      console.log(object);
+      nocoupon = false;
     } else {
       res.redirect('/');
     }
@@ -939,11 +944,14 @@ const paymentSuccess = async (req, res) => {
           }
         }
       }
-      await Orders.find({ userId: session.userId });
+      await Orders.find({
+        userId: session.userId,
+      });
       await Orders.updateOne(
         { userId: session.userId, _id: session.currentOrder },
-        { $set: { status: 'Build' } }
+        { $set: { status: 'Waiting for confirmation' } }
       );
+      console.log(session.currentOrder);
       await User.updateOne(
         { _id: session.userId },
         {
@@ -960,6 +968,7 @@ const paymentSuccess = async (req, res) => {
       res.render('user/orderSuccess', {
         count: 0,
         wcount: userData.wishlist.totalqty,
+        orderId: session.currentOrder,
       });
     } else {
       res.redirect('/login');
@@ -1099,7 +1108,7 @@ const addToWishlist = async (req, res) => {
       const productData = await Product.findById({ _id: productId });
       userData.addToWishlist(productData);
       // res.redirect('/')
-      res.json({ status:true});
+      res.json({ status: true });
     } else {
       res.redirect('/wishlist');
     }

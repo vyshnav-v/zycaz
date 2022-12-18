@@ -6,21 +6,26 @@ const AddressSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: 'User',
   },
-  name: {
+  firstname: {
     type: String,
     required: true,
   },
-  house: {
+  lastname: {
     type: String,
     required: true,
   },
+  
   country: {
     type: String,
     required: true,
   },
-  landmark: {
+  address: {
     type: String,
     required: true,
+  },
+  address2: {
+    type: String,
+    // required: true,
   },
   city: {
     type: String,

@@ -105,15 +105,17 @@
 														
 													
 													    <label>Name *</label>
-										     			<input type="text" class="form-control" name="name" required>
+										     			<input type="text" class="form-control" name="firstname" required>
 															
-					
+														 <label>Last Name *</label>
+										     			<input type="text" class="form-control" name="lastname" required>
+
 														<label>Country *</label>
 														<input type="text" class="form-control" name="country" required>
 						
 														<label>Street address *</label>
-														<input type="text" class="form-control" placeholder="House number and Street name" name="house" required>
-														<input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." name="landmark" required>
+														<input type="text" class="form-control" placeholder="House number and Street name" name="streetAddress" required>
+														<input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." name="streetAddress2" required>
 						
 														<div class="row">
 															<div class="col-sm-6">
@@ -162,16 +164,17 @@
 								    	<p>The following addresses will be used on the checkout page by default.</p>
 
 								    	<div class="row">
-											<%for(let key of userAddress){%>
+											<%if(userAddress.length>0){
+												for(let key of userAddress){%>
 								    		<div class="col-lg-6">
 								    			<div class="card card-dashboard">
 
 								    				<div class="card-body">
 								    					<h3 class="card-title">Billing Address</h3><!-- End .card-title -->
 
-														<p><%= key.name %><br>
-															<%= key.house %>,<%= key.landmark %><br>
-															<%= key.city %>,<%= key.state %><br>
+														<p><%= key.firstname %> <%=key.lastname%><br>
+															<%= key.address %> , <%= key.address2 %><br>
+															<%= key.city %> , <%= key.state %><br>
 															<%= key.country %><br>
 															<%= key.pin %><br>
 															<%= key.mobileno %><br>
@@ -182,7 +185,7 @@
 								    				</div><!-- End .card-body -->
 								    			</div><!-- End .card-dashboard -->
 								    		</div><!-- End .col-lg-6 -->
-											<%}%>
+											<%}}else{%>
 
 								    		<div class="col-lg-6">
 								    			<div class="card card-dashboard">
@@ -194,6 +197,7 @@
 								    				</div>
 								    			</div>
 								    		</div>
+											<%}%>
 								    	</div><!-- End .row -->
 								    </div><!-- .End .tab-pane -->
 

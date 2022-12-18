@@ -348,10 +348,10 @@ const reggProduct = async (req, res) => {
         rating: req.body.rating,
         image: req.file.filename,
         brand : req.body.brand,
-        gender : req.body.gender
+        gender : req.body.gender,
+        category:req.body.category
       });
-      console.log(req.body.category)
-      product.category = req.body.category;
+     
       console.log(product);
       const productData = await product.save();
       if (productData) {

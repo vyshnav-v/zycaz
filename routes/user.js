@@ -47,5 +47,8 @@ router.get('/delete-wishlist',userController.deleteWishlist)
 router.get('/add-to-cart-delete-wishlist',userController.addCartdelWishlsit)
 
 router.get('/logout', userController.userlogout);
+// router.use('*', (req, res) => {
+//     res.render('user/user404');
+//   });
 
 module.exports = router;
