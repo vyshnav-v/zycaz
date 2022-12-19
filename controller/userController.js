@@ -830,6 +830,7 @@ const checkout = async (req, res) => {
       const completeUser = await userData.populate('cart.item.productId');
       const addressData = await Address.find({ userId: session.userId });
       const selectAddress = await Address.findOne({ _id: id });
+      console.log(selectAddress);
       if (session.couponTotal == 0) {
         //update coupon
         session.couponTotal = userData.cart.totalPrice;
