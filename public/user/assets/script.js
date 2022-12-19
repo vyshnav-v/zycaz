@@ -43,6 +43,7 @@ function addToWishlist(productId) {
         let count = $('#wish-count').html();
         count = parseInt(count);
         $('#wish-count').html(count);
+
       } else {
         Swal.fire({
           position: 'center',
@@ -70,8 +71,10 @@ function addToCartDeleteWish(productId) {
           timer: 1500,
         });
         let count = $('#wish-count').html();
+        $('#wish-count').reload(location.href +" #wish-count" )
         count = parseInt(count);
         $('#wish-count').html(count);
+
       } else {
         Swal.fire({
           position: 'center',
