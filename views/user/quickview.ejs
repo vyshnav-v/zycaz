@@ -29,24 +29,24 @@
                         <div class="product-gallery product-gallery-separated">
                             <!-- <span class="product-label label-sale">Sale</span> -->
                             <figure class="product-separated-item ">
-                                <img src="productImage/<%=details.image%>" data-zoom-image="" alt="product image">
+                                <img src="productImage/<%=details.imageM%>" data-zoom-image="" alt="product image">
 
-                                <a href="#" id="btn-separated-gallery" class="btn-product-gallery">
+                                <a href="" id="btn-separated-gallery" class="btn-product-gallery">
                                     <i class="icon-arrows"></i>
                                 </a>
                             </figure>
 
-                            <!-- <figure class="product-separated-item">
-                                <img src="assets/images/products/single/sticky/2.jpg" data-zoom-image="assets/images/products/single/sticky/2-big.jpg" alt="product image">
+                            <figure class="product-separated-item">
+                                <img src="productImage/<%=details.image1%>" data-zoom-image="" alt="product image">
                             </figure>
 
                             <figure class="product-separated-item">
-                                <img src="assets/images/products/single/sticky/3.jpg" data-zoom-image="assets/images/products/single/sticky/3-big.jpg" alt="product image">
+                                <img src="productImage/<%=details.image2%>" data-zoom-image="" alt="product image">
                             </figure>
 
                             <figure class="product-separated-item">
-                                <img src="assets/images/products/single/sticky/4.jpg" data-zoom-image="assets/images/products/single/sticky/4-big.jpg" alt="product image">
-                            </figure> -->
+                                <img src="productImage/<%=details.image3%>" data-zoom-image="" alt="product image">
+                            </figure>
                         </div>
                         <!-- End .product-gallery -->
                     </div><!-- End .col-md-6 -->
@@ -102,11 +102,13 @@
 
                                     <button class="btn btn-outline-danger disabled">Out of Stock</button>
                               <%  }else{%>
-                                <a href="/addtocart?id=<%=details._id%>" class="btn-product btn-cart"><span>add to cart</span></a>
+                                <button onclick="addToCart('<%=details._id%>')" class="btn-product btn-cart btn btn-outline-primary" > <span>add to cart</span></button>
+
                                 <%}%>
 
                                 <div class="details-action-wrapper">
-                                    <a href="/add-to-wishlist?id=<%= details._id %>" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                                    <button onclick="addToWishlist('<%=details._id%>')" class="btn-product btn-wishlist btn btn-outline-primary border-0"><span>add to wishlist</span></button>
+
                                     <!-- <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a> -->
                                 </div><!-- End .details-action-wrapper -->
                             </div><!-- End .product-details-action -->
@@ -278,4 +280,4 @@
             
         </div><!-- End .container -->
     </div><!-- End .page-content -->
-</main><!-- End .main -->
+</main><!-- End .main --

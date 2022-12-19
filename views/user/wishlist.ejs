@@ -23,7 +23,7 @@
 
             <div class="page-content">
             	<div class="container">
-					<table class="table table-wishlist table-mobile">
+					<table id="mytable" class="table table-wishlist table-mobile">
 						<thead>
 							<tr>
 								<th>Product</th>
@@ -44,7 +44,7 @@
 									<div class="product">
 										<figure class="product-media">
 											<a href="/productDetails?id=<%=key.productId._id%>">
-												<img src="productImage/<%=key.productId.image%>" alt="Product image">
+												<img src="productImage/<%=key.productId.imageM%>" alt="Product image">
 											</a>
 										</figure>
 
@@ -69,7 +69,7 @@
                                     <%if(key.productId.stock==0){%>
                                         <button class="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
                                         <%}else{%>
-								      <a href="/add-to-cart-delete-wishlist?id=<%= key.productId._id %>"><button class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button></a>
+									  <button id="refresh-btn" onclick="addToCartDeleteWish('<%= key.productId._id %>')" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button>
                                    <% }%>
 
 								</td>

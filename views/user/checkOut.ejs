@@ -24,6 +24,7 @@
                     <form action="/add-coupon" method="post">
                         <input type="text" class="form-control"  name="offer" required id="checkout-discount-input">
                         <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
+                        <button class="form-control btn btn-sm btn-minwidth-sm btn-outline-primary"> Apply<i class="icon-long-arrow-right"></i></button>
                     </form>
                     <% if(nocoupon) { %>
                         <p style="color: red">INVALID COUPON</p>

@@ -152,17 +152,26 @@
           </div>
           <div class="mb-3">
             <label for="formFileMultiple" class="form-label"
-              >Product image</label
+              >Main Product Image</label
             >
-            <img src="/productImage/<%=product.image%>" width="100wh" height="auto" alt="" srcset="" id="imgView">
-            <input
+            <img src="/productImage/<%=product.imageM%>" width="100wh" height="auto" alt="" srcset="" id="imgView">
+            <!-- <input
               class="form-control bg-dark"
               type="file"
               id="formFileMultiple"
               name="productimg"
               multiple
               onchange="viewImage(event)"
-            >
+            > -->
+            <input type="file" class="form-control" name="pimages" id="formFile" accept="image/*" onchange="viewImage(event)" > 
+
+          </div>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Other Images</label>
+           <input type="file" class="form-control mb-2" name="pimages" id="formFile" accept="image/*"> 
+           <input type="file" class="form-control mb-2" name="pimages" id="formFile" accept="image/*"> 
+           <input type="file" class="form-control mb-2" name="pimages" id="formFile" accept="image/*"> 
+
           </div>
           <!-- <div class="d-flex align-items-center justify-content-between mb-4">
             <div class="form-check">

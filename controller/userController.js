@@ -533,6 +533,8 @@ const userProfile = async (req, res) => {
       const addressData = await Address.find({ userId: id });
       const orderData = await Orders.find({ userId: id });
       const userData = await User.findById({ _id: id });
+      
+
       res.render('user/userprofile', {
         user: userData,
         userOrders: orderData,
@@ -848,7 +850,6 @@ const checkout = async (req, res) => {
         userAddress: addressData,
         addSelect: selectAddress,
       });
-      console.log(object);
       nocoupon = false;
     } else {
       res.redirect('/');
@@ -1126,7 +1127,8 @@ const addCartdelWishlsit = async (req, res) => {
   if (add) {
     userData.removefromWishlist(productId);
   }
-  res.redirect('/viewcart');
+  // res.redirect('/viewcart');
+  res.json({status:true})
 };
 const deleteWishlist = async (req, res) => {
   const productId = req.query.id;

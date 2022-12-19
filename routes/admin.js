@@ -27,13 +27,13 @@ adminRoute.get('/', adminController.adminLanding);
 adminRoute.get('/addproduct', adminController.addProduct);
 adminRoute.post(
   '/addproduct',
-  upload.single('productimg'),
+  upload.any(),
   adminController.reggProduct,
 );
 adminRoute.get('/editproduct', adminController.editProduct);
 adminRoute.post(
   '/editproduct',
-  upload.single('productimg'),
+  upload.any(),
   adminController.updateProduct,
 );
 adminRoute.get('/adminOrder', adminController.viewOrder);
@@ -56,7 +56,7 @@ adminRoute.get('/backTodelete', adminController.backToDelete);
 adminRoute.get('/addbanner', adminController.addBanner);
 adminRoute.post(
   '/addbanner',
-  upload.single('productimg'),
+  upload.any(),
   adminController.getBanner,
 );
 

@@ -320,7 +320,10 @@ const updateProduct = async (req, res) => {
             size: req.body.size,
             gender: req.body.gender,
             rating: req.body.rating,
-            image: req.file.filename,
+            imageM : req.files[0] && req.files[0].filename ? req.files[0].filename:"",
+            image1 : req.files[1] && req.files[1].filename ? req.files[1].filename:"",
+            image2 : req.files[2] && req.files[2].filename ? req.files[2].filename:"",
+            image3 : req.files[3] && req.files[3].filename ? req.files[3].filename:"",
           },
         }
       );
@@ -364,7 +367,10 @@ const reggProduct = async (req, res) => {
         size: req.body.size,
         gender: req.body.gender,
         rating: req.body.rating,
-        image: req.file.filename,
+        imageM : req.files[0] && req.files[0].filename ? req.files[0].filename:"",
+        image1 : req.files[1] && req.files[1].filename ? req.files[1].filename:"",
+        image2 : req.files[2] && req.files[2].filename ? req.files[2].filename:"",
+        image3 : req.files[3] && req.files[3].filename ? req.files[3].filename:"",
         brand: req.body.brand,
         gender: req.body.gender,
         category: req.body.category,
@@ -523,31 +529,36 @@ const getBanner = async (req, res) => {
       const bannerlist = await Banner.find();
       if (bannerlist != null) {
         await Banner.updateOne({
-          btitle: req.body.title,
-          bimage: req.file.filename,
+          btitle1: req.body.title1,
+          btitle2:  req.body.title2,
+          bimage1 : req.files[0] && req.files[0].filename ? req.files[0].filename:"",
+          bimage2 : req.files[1] && req.files[1].filename ? req.files[1].filename:""
+  
         });
         res.redirect('/admin/addbanner');
       } else {
         const banner = Banner({
-          btitle: req.body.title,
-          bimage: req.file.filename,
+          btitle1: req.body.title1,
+          btitle2:  req.body.title2,
+          bimage1 : req.files[0] && req.files[0].filename ? req.files[0].filename:"",
+          bimage2 : req.files[1] && req.files[1].filename ? req.files[1].filename:""
         });
         console.log(banner);
         const bannerData = await banner.save();
+        res.redirect('/admin/addbanner');
 
-        const userData = await User.find({ isAdmin: 0 });
-        const productData = await Product.find();
-        if (bannerData) {
-          res.redirect('/admin/addbanner');
-        } else {
-          res.render('admin/addBanner', {
-            message: 'Your registration was a failure',
-            banner: bannerlist,
-            users: userData,
-            product: productData,
-            layout: '../views/layout/adminLayout.ejs',
-          });
-        }
+       
+        // if (bannerData) {
+        //   res.redirect('/admin/addbanner');
+        // } else {
+        //   res.render('admin/addBanner', {
+        //     message: 'Your registration was a failure',
+        //     banner: bannerlist,
+        //     users: userData,
+        //     product: productData,
+        //     layout: '../views/layout/adminLayout.ejs',
+        //   });
+        // }
       }
     } else {
       res.redirect('/admin');

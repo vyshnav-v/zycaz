@@ -42,9 +42,21 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  image: {
+  imageM: {
     type: String,
-    required: true,
+    // required: true,
+  },
+  image1: {
+    type: String,
+    // required: true,
+  },
+   image2: {
+    type: String,
+    // required: true,
+  }, 
+  image3: {
+    type: String,
+    // required: true,
   },
   isProduct: {
     type: Number,

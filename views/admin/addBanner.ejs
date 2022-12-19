@@ -14,13 +14,22 @@
               </tr>
             </thead>
             <tbody>
-              <% if( banner.length> 0){ for(let i = 1;i <= banner.length; i++){ %>
+              <% if( banner.length> 0){ for(let key of banner){ %>
                   <tr>
                     <td>
-                      <%= banner[i-1].btitle %>
+                      <%= key.btitle1 %>
                     </td>
 
-                    <td><img src="/productImage/<%=banner[i-1].bimage %>" alt="ZycaZ" width="auto" height="150vh"></td>
+                    <td><img src="/productImage/<%=key.bimage1 %>" alt="ZycaZ" width="auto" height="150vh"></td>
+
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= key.btitle2 %>
+                    </td>
+
+                    <td><img src="/productImage/<%=key.bimage2 %>" alt="ZycaZ" width="auto" height="150vh"></td>
 
 
                   </tr>
@@ -42,18 +51,31 @@
               </h3>
             </a>
           </div>
+          <%for(let key of banner){%>
           <form action="/admin/addbanner" method="post" enctype="multipart/form-data">
 
             <div class="form-floating mb-4">
-              <textarea type="text" class="form-control" id="floatingPassword" name="title" placeholder="Title"
+              <textarea type="text" class="form-control" id="floatingPassword" value="<%=key.btitle1 %>" name="title1" placeholder="Title"
                 required></textarea>
-              <label for="floatingPassword">Title</label>
+              <label for="floatingPassword">Title 1</label>
+            </div>
+            <div class="form-floating mb-4">
+              <textarea type="text" class="form-control" id="floatingPassword" value="<%=key.btitle2 %>" name="title2" placeholder="Title"
+                required></textarea>
+              <label for="floatingPassword">Title 2</label>
             </div>
 
             <div class="mb-3">
-              <label for="formFileMultiple" class="form-label">Banner image</label>
-              <input class="form-control bg-dark" type="file" id="formFileMultiple" name="productimg" multiple />
+              
+              <label for="formFileMultiple" class="form-label">Banner Image1</label>
+              <!-- <input class="form-control " type="file" id="formFileMultiple" name="productimg" multiple /> -->
+              <input type="file" class="form-control mb-4" name="bimages" id="formFile" value="<%=key.bimage1 %>" accept="image/*">
+              <label for="formFileMultiple" class="form-label">Banner Image2</label>
+
+              <input type="file" class="form-control mb-2" name="bimages" placeholder="Background Image" value="<%=key.bimage2 %>" id="formFile" accept="image/*">
+
             </div>
+            <%}%>
             <!-- <div class="d-flex align-items-center justify-content-between mb-4">
             <div class="form-check">
               <input
@@ -68,7 +90,7 @@
             </div>
           </div> -->
             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
-              Upadte
+              Submit
             </button>
             <% if(typeof message !=='undefined' ) { %>
               <p style="color: red">

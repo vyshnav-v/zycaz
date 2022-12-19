@@ -1,0 +1,69 @@
+<div class="col-md-3 col-lg-3 col-xl-3 d-flex">
+    <form action="/cart-operation?id=<%= result.items[i].itemId %>&sub=true " method="post" >
+      <button class="btn btn-link px-2 " type="submit"
+      onclick="//this.parentNode.querySelector('input[type=number]').stepDown()">
+      <i class="fas fa-minus"></i>
+    </button>
+
+    </form>
+ 
+    <input id="form1" min="0" name="quantity" value="<%= result.items[i].quantity %> " type="text"
+      class="form-control form-control-sm" />
+    <form action="/cart-operation?id=<%= result.items[i].itemId %>&add=true" method="post">
+      <button class="btn btn-link px-2" type="submit"
+      onclick="//this.parentNode.querySelector('input[type=number]').stepUp()">
+      <i class="fas fa-plus"></i>
+    </button>
+    </form>
+    
+  </div>
+
+
+
+
+
+  <div class="col-lg-8 table-responsive mb-5">
+    <table class="table table-bordered  mb-0">
+        <thead class="bg-secondary text-dark">
+            <tr>
+                <th>Products</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle">
+      
+          <% for(let i=1;i<=cart.length; i++) { %>
+             <tr>
+                 <td class="align-middle"><img src="./productImages/<%=cart[i-1].productID.pimage %>" alt="" style="width: 50px;">
+                     <%=cart[i-1].productID.pname %></td>
+                 <td class="align-middle text-center">₹<%=cart[i-1].productID.price %></td>
+                 <td class="align-middle">
+                    
+                    <form action="/updateQuantity?id=<%=cart[i-1]._id%>" method="post"> 
+                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                         <div class="input-group-btn">
+                             <button class="btn btn-sm btn-primary btn-minus">
+                                 <i class="fa fa-minus"></i>
+                             </button>
+                         </div>
+                         <input type="number" name="quantity" class="form-control form-control-sm bg-secondary text-center"
+                            min="1" max="10" value="<%=cart[i-1].quantity %>">
+                         <div class="input-group-btn">
+                             <button class="btn btn-sm btn-primary btn-plus">
+                                 <i class="fa fa-plus"></i>
+                             </button>
+                         </div>
+                     </div>
+                     </form>
+                 </td>
+                 <td class="align-middle text-center">₹<%=cart[i-1].productID.price*cart[i-1].quantity%></td>
+                 <td class="align-middle text-center"><form action="/deleteCart?id=<%=cart[i-1]._id %> " method="post"><button class="btn btn-sm btn-primary" type="submit"><i
+                             class="fa fa-times"></i></button></form></td>
+             </tr>
+             <% }  %>
+         </tbody>
+    </table>
+</div>

@@ -61,7 +61,7 @@
 											<div class="nk-gap"></div>
 											
 											<section class="container">
-											  <table class="table text-success">
+											  <table id="myTable" class="table text-success	">
 												  <thead>
 													<tr>
 													  <th scope="col">OrderId</th>
@@ -69,14 +69,14 @@
 													  <th scope="col">Payment</th>
 													  <th scope="col">Status</th>
 													  <th scope="col">Actions</th>
-				  
+				                                       	  <th scope="col"></th>
 													</tr>
 												  </thead>
 												  <% for(let key of userOrders){ %>
 												  <tbody>
 													<tr>
 													  <td><%= key._id %></td>
-													  <td><%= key.createdAt %></td>
+													  <td><%= key.createdAt.toDateString() %></td>
 													  <td><%= key.payment %></td>
 													  <td><%= key.status %></td>
 													  <td><a href="/cancel-order?id=<%= key._id %>" class="btn btn-outline-primary-2">Cancel Order</a></td>

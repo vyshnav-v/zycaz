@@ -14,8 +14,8 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                                 <div class="container">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/shop">Shop</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                                     </ol>
                                 </div><!-- End .container -->
@@ -52,7 +52,7 @@
                                                                             <figure class="product-media">
                                                                                 <a
                                                                                     href="/productDetails?id=<%=key.productId._id%>">
-                                                                                    <img src="productImage/<%=key.productId.image%>"
+                                                                                    <img src="productImage/<%=key.productId.imageM%>"
                                                                                         alt="Product image">
                                                                                 </a>
                                                                             </figure>
@@ -88,6 +88,7 @@
                                                                                     <input class="btn btn-outline-primary-2 btn-order " type="submit" value="Update">
 
                                                                             </td>
+                                                                            
                                                                         </form>
                                                                     <td class="total-col"> ₹.<%=
                                                                             key.qty*key.productId.price %>
@@ -183,12 +184,7 @@
 
 
 
-                                                            <tr class="summary-shipping-estimate">
-                                                                <td>Estimate for Your Country<br> <a
-                                                                        href="dashboard.html">Change
-                                                                        address</a></td>
-                                                                <td>&nbsp;</td>
-                                                            </tr><!-- End .summary-shipping-estimate -->
+                                                           
 
                                                             <tr class="summary-total">
                                                                 <td>Total:</td>

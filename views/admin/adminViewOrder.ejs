@@ -23,7 +23,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img src="/productImage/<%= order.products.item[i].productId.image%>"
+                                            <img src="/productImage/<%= order.products.item[i].productId.imageM%>"
                                                 class="img-fluid" alt="lol">
                                         </div>
                                         <div
@@ -105,7 +105,7 @@
 
                                         <p class="text-muted mb-0"><span
                                                 class="fw-bold me-4">Total</span> ₹
-                                            <%=order.products.totalPrice *100/100-order.discount%>
+                                            <%=(order.products.totalPrice *100)/(100-order.discount)%>
                                         </p>
                                     <%}else{%>
                                         <p class="text-muted mb-0"><span
@@ -119,7 +119,7 @@
                                     <p class="text-muted mb-0">Invoice Number : <%= order._id %>
                                     </p>
                                     <p class="text-muted mb-0"><span
-                                            class="fw-bold me-4">Discount</span>  <%order.discount%>%
+                                            class="fw-bold me-4">Discount</span> ₹ :<%=((order.products.totalPrice *100)/(100-order.discount))-order.products.totalPrice%>
                                     </p>
                                 </div>
 
@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="d-flex justify-content-between mb-5">
-                                    <p class="text-muted mb-0">Recepits Voucher : <%= order.offer %></p>
+                                    <p class="text-muted mb-0">Recepits Voucher : <%= order.offer %> = <%=order.discount%> % </p>
                                     <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery
                                             Charges</span> Free</p>
                                 </div>
