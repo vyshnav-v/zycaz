@@ -65,7 +65,7 @@
                                     <tr>
                                         <th scope="col">SI NO</th>
                                         <th scope="col">Order Id</th>
-                                        <th scope="col">User Id</th>
+                                        <th scope="col">User Name</th>
                                         <th scope="col">Time</th>
                                         <th scope="col">Mode</th>
                                         <th scope="col">Total Price</th>
@@ -85,7 +85,7 @@
                                                     <%= order[i-1]._id %>
                                                 </td>
                                                 <td>
-                                                    <%= order[i-1].userId %>
+                                                    <%= order[i-1].userId.name %>
                                                 </td>
                                                 <td>
                                                     <%= order[i-1].createdAt %>
@@ -124,7 +124,7 @@
                                         <tr>
                                             <th scope="col">SI NO</th>
                                             <th scope="col">Order Id</th>
-                                            <th scope="col">User Id</th>
+                                            <th scope="col">User Name</th>
                                             <th scope="col">Time</th>
                                             <th scope="col">Mode</th>
                                             <th scope="col">Total Price</th>
@@ -144,7 +144,7 @@
                                                         <%= order[i-1]._id %>
                                                     </td>
                                                     <td>
-                                                        <%= order[i-1].userId %>
+                                                        <%= order[i-1].userId.name %>
                                                     </td>
                                                     <td>
                                                         <%= order[i-1].createdAt %>
@@ -181,12 +181,14 @@
                                             <tr>
                                                 <th scope="col">SI NO</th>
                                                 <th scope="col">Order Id</th>
-                                                <th scope="col">User Id</th>
+                                                <th scope="col">User Name</th>
                                                 <th scope="col">Time</th>
                                                 <th scope="col">Mode</th>
                                                 <th scope="col">Total Price</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Actions</th>
+                                                <th scope="col">Details</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -200,7 +202,7 @@
                                                             <%= order[i-1]._id %>
                                                         </td>
                                                         <td>
-                                                            <%= order[i-1].userId %>
+                                                            <%= order[i-1].userId.name %>
                                                         </td>
                                                         <td>
                                                             <%= order[i-1].createdAt %>
@@ -220,9 +222,13 @@
                                                             <a href="/admin/admin-confirm-order?id=<%= order[i-1]._id %>"
                                                                 class="btn btn-outline-success ">Comfirm Order</a>
                                                         </td>
+                                                        <td>
+                                                            <a href="/admin/admin-order-view?id=<%= order[i-1]._id %>"
+                                                                class="btn btn-outline-danger mb-1">View Order</a>
+                                                        </td>
                                                     </tr>
                                                     <% }}else{ %>
-                                                        <tr>
+                                                        <tr>    
                                                             <td colspan="5">Orders Not Found</td>
                                                         </tr>
                                                         <% } %>

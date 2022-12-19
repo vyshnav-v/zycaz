@@ -885,6 +885,7 @@ const storeOrder = async (req, res) => {
           payment: req.body.payment,
           products: completeUser.cart,
           offer: session.offer.name,
+          discount:session.offer.discount
         });
         let orderProductStatus = [];
         for (let key of order.products.item) {

@@ -40,6 +40,7 @@ adminRoute.get('/adminOrder', adminController.viewOrder);
 adminRoute.get('/admin-cancel-order', adminController.adminCancelOrder);
 adminRoute.get('/admin-confirm-order', adminController.adminConfirmorder);
 adminRoute.get('/admin-delivered-order', adminController.adminDeliveredorder);
+adminRoute.get('/admin-order-view', adminController.adminOrderDetails);
 
 adminRoute.get('/adminOffer',adminController.adminLoadOffer)
 adminRoute.post('/adminOffer',adminController.adminStoreOffer)

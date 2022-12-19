@@ -55,6 +55,10 @@ const orderSchema = new mongoose.Schema({
     immutable: true,
     default: () => Date.now(),
   },
+  discount:{
+    type:Number,
+    default:0
+  },
   products: {
     item: [
       {
@@ -91,7 +95,8 @@ const orderSchema = new mongoose.Schema({
   offer:{
     type:String,
     default:"None"
-}
+},
+
 });
 
 orderSchema.methods.addToOrders = function (product) {
