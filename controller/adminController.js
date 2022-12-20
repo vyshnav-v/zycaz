@@ -528,13 +528,14 @@ const getBanner = async (req, res) => {
     if (adminSession.adminid) {
       const bannerlist = await Banner.find();
       if (bannerlist != null) {
-        await Banner.updateOne({
+       const b= await Banner.updateOne({
           btitle1: req.body.title1,
           btitle2:  req.body.title2,
           bimage1 : req.files[0] && req.files[0].filename ? req.files[0].filename:"",
           bimage2 : req.files[1] && req.files[1].filename ? req.files[1].filename:""
   
         });
+        console.log(b);
         res.redirect('/admin/addbanner');
       } else {
         const banner = Banner({
@@ -545,6 +546,7 @@ const getBanner = async (req, res) => {
         });
         console.log(banner);
         const bannerData = await banner.save();
+        console.log(bannerData);
         res.redirect('/admin/addbanner');
 
        

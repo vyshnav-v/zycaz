@@ -51,16 +51,16 @@
               </h3>
             </a>
           </div>
-          <%for(let key of banner){%>
+
           <form action="/admin/addbanner" method="post" enctype="multipart/form-data">
 
             <div class="form-floating mb-4">
-              <textarea type="text" class="form-control" id="floatingPassword" value="<%=key.btitle1 %>" name="title1" placeholder="Title"
+              <textarea type="text" class="form-control" id="floatingPassword" value="" name="title1" placeholder="Title"
                 required></textarea>
               <label for="floatingPassword">Title 1</label>
             </div>
             <div class="form-floating mb-4">
-              <textarea type="text" class="form-control" id="floatingPassword" value="<%=key.btitle2 %>" name="title2" placeholder="Title"
+              <textarea type="text" class="form-control" id="floatingPassword" value="" name="title2" placeholder="Title"
                 required></textarea>
               <label for="floatingPassword">Title 2</label>
             </div>
@@ -69,13 +69,13 @@
               
               <label for="formFileMultiple" class="form-label">Banner Image1</label>
               <!-- <input class="form-control " type="file" id="formFileMultiple" name="productimg" multiple /> -->
-              <input type="file" class="form-control mb-4" name="bimages" id="formFile" value="<%=key.bimage1 %>" accept="image/*">
+              <input type="file" class="form-control mb-4" name="bimages" id="formFile" value="" accept="image/*">
               <label for="formFileMultiple" class="form-label">Banner Image2</label>
 
-              <input type="file" class="form-control mb-2" name="bimages" placeholder="Background Image" value="<%=key.bimage2 %>" id="formFile" accept="image/*">
+              <input type="file" class="form-control mb-2" name="bimages" placeholder="Background Image" value="" id="formFile" accept="image/*">
 
             </div>
-            <%}%>
+           
             <!-- <div class="d-flex align-items-center justify-content-between mb-4">
             <div class="form-check">
               <input

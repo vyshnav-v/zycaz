@@ -1,4 +1,8 @@
-    <% if(isLoggedin) { %>
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  
+  <% if(isLoggedin) { %>
         <%-include('../partials/userLogin.ejs',{count:count,wcount:wcount}) %> 
       <% }else { %>
         <%-include('../partials/Header.ejs') %> 
@@ -28,13 +32,13 @@
                                             <div class="col-lg-9">
 
 
-                                                <table class="table table-cart table-mobile">
+                                                <table class="table table-cart table-mobile ">
                                                     <thead>
                                                         <tr>
                                                             <th>Product</th>
                                                             <th>Price</th>
                                                             <th>Quantity</th>
-                                                            <th></th>
+                                                        
                                                             <th>Total</th>
                                                             <th></th>
                                                         </tr>
@@ -71,25 +75,27 @@
                                                                     <td class="price-col">₹
                                                                         <%=key.productId.price%>
                                                                     </td>
-                                                                    <form action="/editqnty?id=<%= key._id %>"
-                                                                        method="post">
-                                                                    <td class="quantity-col">
-                                                                            <div class="cart-product-quantity">
-                                                                                <input type="number"
-                                                                                    class="form-control" name="qty"
-                                                                                    value="<%= key.qty %>" min="1"
-                                                                                    max="10" step="1" data-decimals="0">
-
-                                                                                </div><!-- End .cart-product-quantity -->
+                                                                    
+                                                                    <td class="mr-0">
+                                                                        
+                                                                        <div
+                                                                        class="input-group w-auto justify-content-end align-items-center">
+                                                                        <form action="/editqnty?id=<%= key._id %>"
+                                                                            method="post">
                                                                                 
-                                                                                
-                                                                            </td>
-                                                                            <td>
-                                                                                    <input class="btn btn-outline-primary-2 btn-order " type="submit" value="Update">
-
+                                                                                <button data-decrease type="submit"
+                                                                                    class="button-plus border-0  icon-shape icon-sm "
+                                                                                    data-field="quantity">-</button>
+                                                                                <input data-value type="text" min="1" step="1"
+                                                                                max="10" value="<%=key.qty%>" name="qty"
+                                                                                class="quantity-field border-0 text-center w-25">
+                                                                                <button data-increase type="submit"
+                                                                                class="button-minus border-0  icon-shape icon-sm mx-1 "
+                                                                                data-field="quantity">+</button>
+                                                                            </form>
+                                                                        </div>
                                                                             </td>
                                                                             
-                                                                        </form>
                                                                     <td class="total-col"> ₹.<%=
                                                                             key.qty*key.productId.price %>
                                                                     </td>
