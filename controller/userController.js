@@ -911,9 +911,10 @@ const storeOrder = async (req, res) => {
         if (req.body.payment === 'COD') {
           res.redirect('/order-success');
         } else if (req.body.payment === 'PayPal') {
+          const usTotal=completeUser.cart.totalPrice/80
           res.render('user/paypal', {
             userId: session.userId,
-            total: completeUser.cart.totalPrice,
+            total: usTotal,
             count: userData.cart.totalqty,
             wcount: userData.wishlist.totalqty,
           });
